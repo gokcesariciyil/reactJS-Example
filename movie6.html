@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <title>React Tutorial</title>
+	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+	<link href="https://fonts.googleapis.com/css?family=Electrolize" rel="stylesheet">
+	  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  </head>
+  <body>
+    <div id="content5"></div>
+	<img href="https://image.tmdb.org/t/p/w640/19Z5Uz0AMhw49057rhhdCSYwHR1.jpg" class="page-bg5"/>
+  </body>
+  <script type="text/babel">
+ 
+var App = React.createClass({
+  getInitialState: function() {
+    return {
+      jobs: []
+    }
+  },
+  
+  componentDidMount: function() {
+    // Is there a React-y way to avoid rebinding `this`? fat arrow?
+    var th = this;
+    this.serverRequest = 
+      axios.get(this.props.source)
+        .then(function(result) {    
+          th.setState({
+            title: result.data.title,
+			average: result.data.vote_average,
+			backdrop_path: result.data.backdrop_path,
+			icerik: result.data.overview,	
+			runtime: result.data.runtime,
+			production_company: result.data.production_companies,
+			release_date: result.data.release_date
+          });
+        })
+  },
+  
+  componentWillUnmount: function() {
+    this.serverRequest.abort();
+  },
+  
+render() {
+      return (
+        <div className="container">
+		<div className="row">
+			<div className="col-md-4">
+					<img className="dt-left-img" src={"https://image.tmdb.org/t/p/w300_and_h450_bestv2"+this.state.backdrop_path}/>
+			</div>
+			<div className="col-md-8 det-title">
+				<div className="col-md-12">
+						<h3 className="details-title">{this.state.title}</h3>
+						<div className="det-button">
+					<a href="list.html">
+						<button  type="button" class="btn-success">Back</button>
+					</a>
+				</div>
+				</div>
+				<br/><br/>
+				<div className="col-md-12 d-cont">
+						<span className="details-content">{this.state.icerik}</span>
+				</div>
+				
+				<div className="col-md-12 d-runtime">
+						Runtime: <span>{this.state.runtime}</span>
+				</div>
+				<div className="col-md-12 d-average">
+						Average rating: <span>{this.state.average}</span>
+				</div>
+				<div className="col-md-12 d-prod">
+						Production Company: <span>{this.state.production_companies}</span>
+				</div>
+				<div className="col-md-12 d-release">
+						Release Date: <span>{this.state.release_date}</span>
+				</div>
+				<div className="col-md-12 d-cast">
+						Cast
+				</div>
+				<div className="col-md-12 d-release">
+					<img className="img-circle"/>
+					<img className="img-circle"/>
+					<img className="img-circle"/>
+					<img className="img-circle"/>
+					<img className="img-circle"/>
+				</div>
+				<div className="col-md-12 trailer">
+					Trailers
+				</div>
+				<div className="col-md-12">
+					<iframe className="m-videos" width="150" height="100" src="https://www.youtube.com/embed/gbug3zTm3Ws" frameborder="0" allowfullscreen></iframe>
+					<iframe className="m-videos" width="150" height="100" src="https://www.youtube.com/embed/gbug3zTm3Ws" frameborder="0" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+      );
+   }
+   });
+
+ReactDOM.render(<App source="https://api.themoviedb.org/3/movie/263115?api_key=7f0f9b4c8986a78fe0557a6f9b23e6b8" />, document.querySelector("#content5"));
+  </script>
+</html>

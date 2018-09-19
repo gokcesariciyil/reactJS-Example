@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+	<link rel="stylesheet" href="style.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+	<link href="https://fonts.googleapis.com/css?family=Electrolize" rel="stylesheet">
+	  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	  
+
+  </head>
+  <body>
+  <div class="container">
+  <div class="row">
+	<div onclick="location.href='movie1.html'" class="col-md-4 contents" id="content0"></div> 
+	<div onclick="location.href='movie2.html'" class="col-md-4 contents" id="content1"></div>
+	<div onclick="location.href='movie3.html'" class="col-md-4 contents" id="content2"></div>
+	</div>
+	<br>
+	 <div class="row">
+	<div onclick="location.href='movie4.html'" class="col-md-4 contents" id="content3"></div>
+	<div onclick="location.href='movie5.html'" class="col-md-4 contents" id="content4"></div>
+	<div onclick="location.href='movie6.html'" class="col-md-4 contents" id="content5"></div>
+	</div></div>
+  </body>
+  <script type="text/babel">
+var App = React.createClass({
+  
+  getInitialState: function() {
+    return {
+      
+    }
+  },
+  
+  componentDidMount: function() {
+    var th = this;
+    this.serverRequest = 
+      axios.get(this.props.source)
+        .then(function(result) {    
+          th.setState({
+            title: result.data.title,
+			average: result.data.vote_average,
+			backdrop_path: result.data.backdrop_path,
+			icerik: result.data.overview
+          });
+        })
+  },
+  
+  componentWillUnmount: function() {
+    this.serverRequest.abort();
+  },
+  
+render() {
+      return (
+		<div className="container">
+			<div className="row">
+					<img className="img" src={"https://image.tmdb.org/t/p/w300_and_h450_bestv2"+this.state.backdrop_path}/>
+			</div>
+			<div className="row border-content">
+				<div className="col-md-12">
+						<h3 className="movie-title">{this.state.title}</h3>
+				</div>
+				<div className="col-md-12 m-cont">
+						<span className="movie-content">{this.state.icerik}</span>
+				</div>
+				<div className="col-md-12 m-average">
+						Average rating: <span>{this.state.average}</span>
+				</div>
+			</div>
+		</div>
+	
+      );
+   }
+   });
+
+ReactDOM.render(<App source="https://api.themoviedb.org/3/movie/76341?api_key=7f0f9b4c8986a78fe0557a6f9b23e6b8" />, document.querySelector("#content0"));
+ReactDOM.render(<App source="https://api.themoviedb.org/3/movie/315837?api_key=7f0f9b4c8986a78fe0557a6f9b23e6b8" />, document.querySelector("#content1"));
+ReactDOM.render(<App source="https://api.themoviedb.org/3/movie/324552?api_key=7f0f9b4c8986a78fe0557a6f9b23e6b8" />, document.querySelector("#content2"));
+ReactDOM.render(<App source="https://api.themoviedb.org/3/movie/550?api_key=7f0f9b4c8986a78fe0557a6f9b23e6b8" />, document.querySelector("#content3"));
+ReactDOM.render(<App source="https://api.themoviedb.org/3/movie/297762?api_key=7f0f9b4c8986a78fe0557a6f9b23e6b8" />, document.querySelector("#content4"));
+ReactDOM.render(<App source="https://api.themoviedb.org/3/movie/263115?api_key=7f0f9b4c8986a78fe0557a6f9b23e6b8" />, document.querySelector("#content5"));
+  </script>
+</html>

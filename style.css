@@ -1,0 +1,173 @@
+* {
+	 box-sizing: border-box;
+}
+/*@media only screen and (max-width:768px) and (min-width:320px){
+
+}
+@media only screen and (max-width:992px) and (min-width:768px){
+
+}
+@media only screen and (max-width:1200px) and (min-width:992px){
+
+}*/
+
+body > .container 
+{
+	padding:10px;
+	box-sizing: border-box;
+	font-family: 'Electrolize', sans-serif;
+}
+
+.m-cont{
+	height:200px;
+}
+.contents{
+	max-width:350px;
+}
+.img
+{
+	height:100%;
+	width:100%;
+	border:1px solid #c7c4c4;
+	border-bottom:none;
+}
+.border-content{
+	border:1px solid #c7c4c4;
+	}
+	
+.movie-title{
+	padding:10px 0px;
+	font-size:20px;
+	font-weight:bold;
+	color:#5f5a5a;
+	margin-top:15px;
+}
+
+.movie-content, .m-cont{
+	box-sizing:border-box;
+	word-wrap: break-word;
+	height: 220px;
+	font-size:16px;
+	color:#5f5a5a;
+	overflow:hidden;
+	-o-text-overflow:ellipsis;
+	-ms-text-overflow:ellipsis;
+	text-overflow:ellipsis;
+}
+
+.m-average{
+	background-color:rgb(245, 242, 237); 
+	border-top:1px solid #c7c4c4;
+	text-align:center-left;
+	padding:15px 0px;
+	color:gray;
+}
+.page-bg{
+	background: url('https://image.tmdb.org/t/p/original/kqjL17yufvn9OVLyXYpvtyrFfak.jpg');
+}
+
+.page-bg1{
+	background:url('https://image.tmdb.org/t/p/w640/19Z5Uz0AMhw49057rhhdCSYwHR1.jpg');
+}
+
+.page-bg2{
+	background:url('https://image.tmdb.org/t/p/w640/5vHssUeVe25bMrof1HyaPyWgaP.jpg');
+}
+
+.page-bg3{
+	background:url('https://image.tmdb.org/t/p/w1280/adw6Lq9FiC9zjYEpOqfq03ituwp.jpg');
+}
+
+.page-bg4{
+	background:url('https://image.tmdb.org/t/p/w640/qK4040GNvqHH9ICRzpk6VjFcaxo.jpg')
+}
+.page-bg5{
+	background:url('https://image.tmdb.org/t/p/w640/9EXnebqbb7dOhONLPV9Tg2oh2KD.jpg');
+}
+.page-bg, .page-bg1, .page-bg2, .page-bg3, .page-bg4, .page-bg5{	
+  -webkit-filter: blur(15px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(15px);
+  -ms-filter: blur(15px);
+  filter: blur(15px);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-size:cover;
+}
+.details-title{
+	float:left;
+	color:#fff;
+}
+.det-button{
+	float:right;
+	margin-right: 20px;
+}
+.d-average, .d-runtime, .d-prod, .d-release{
+	color:#fff;
+}
+.details-content{
+	color:#fff;
+}
+.d-cont{
+	margin-bottom:20px;
+}
+
+.d-cast{
+	margin-top:15px;
+	font-weight:bold;
+	font-size:20px;
+	color:#fff;
+}
+.m-videos{
+	margin:0px 30px 0px 0px;
+}
+.trailer{
+	color:#fff;
+	font-weight:bold;
+	font-size:20px;
+	margin-top:15px;
+}
+
+
+button{
+	float:right;
+	background-color:#5cb85c;
+	border:none;
+	border-radius:5px;
+	padding:2px 30px;
+	color:#fff;
+}
+
+.img-circle {
+	background-image:url("tom-hardy.jpg");
+	background-position:center;
+	background-size:cover;
+	width:20px;
+	height:20px;
+	margin:5px;
+    border-radius: 50%;
+	border:none;
+}
+
+.dt-left-img{
+	width:100%;
+}
+
+
+.dt-left-img, .det-title{
+	margin-top:50px;
+}
+
+
+
+
+
+@media only screen and (max-width:768px) and (min-width:320px){
+.contents{
+	margin-bottom:50px;
+}
+}
